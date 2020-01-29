@@ -8,6 +8,7 @@ import { Item } from '../../models/google-books.model';
 })
 export class SearchResultsComponent implements OnInit {
   @Input() public books: Item[];
+  @Input() public booksTotal: number;
   constructor() { }
 
   ngOnInit() {

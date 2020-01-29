@@ -8,10 +8,12 @@ import { GoogleBooksModel, Item } from './models/google-books.model';
 })
 export class AppComponent {
   books: Item[];
+  booksTotal: number;
   title = 'book-searcher';
 
   onSearch(event: GoogleBooksModel) {
     console.log(event);
     this.books = event.items;
+    this.booksTotal = event.totalItems;
   }
 }

@@ -16,24 +16,35 @@
 <!--  </mat-list-item>-->
 <!--</mat-list>-->
 <div class="search-content">
-  <div class="wrap">
-    <mat-card *ngFor="let book of books" class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
-        <mat-card-subtitle>{{ book.volumeInfo.publisher }}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="book.volumeInfo.imageLinks?.smallThumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          {{ book.volumeInfo.description }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
+
+  <div class="container">
+    <p-table [value]="books"
+             [autoLayout]="true"
+             [paginator]="true"
+             *ngIf="books"
+             [rows]="10"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Publisher</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-book>
+        <tr>
+          <td>
+            <img [src]="book.volumeInfo.imageLinks?.thumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="Photo of a Shiba Inu">
+          </td>
+          <td>
+            {{ book.volumeInfo.title }}
+          </td>
+          <td>
+            {{ book.volumeInfo.publisher }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
 

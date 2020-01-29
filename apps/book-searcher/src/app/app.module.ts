@@ -10,14 +10,21 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule } from '@
 import { GoogleBooksServiceInterceptor } from './services/google-books.service.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
-import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
+import { TableModule } from 'primeng/table';
 
+const MATERIAL_MODULES = [
+  MatCardModule,
+  MatListModule
+];
+
+const PRIME_MODULES = [
+  TableModule
+]
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    SearchResultsComponent,
-    DefaultLayoutComponent
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +34,8 @@ import { DefaultLayoutComponent } from './layout/default-layout/default-layout.c
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatListModule
+    MATERIAL_MODULES,
+    PRIME_MODULES
   ],
   providers: [
     {
