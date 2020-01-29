@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GoogleBooksService } from '../../services/google-books.service';
 
 @Component({
@@ -6,21 +6,14 @@ import { GoogleBooksService } from '../../services/google-books.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+  public searchValue = '';
 
-  constructor(private googleBooksService: GoogleBooksService) {
-    this.googleBooksService.fetchVolumes('test').subscribe((res) => {
+  constructor(private googleBooksService: GoogleBooksService) {}
+
+  private searchBooks() {
+    this.googleBooksService.fetchVolumes(this.searchValue).subscribe((res) => {
       console.log(res);
-    })
-  }
-
-  ngOnInit() {
-  }
-
-
-  searchBooks(value: string) {
-    this.googleBooksService.fetchVolumes(value).subscribe((res) => {
-
     })
   }
 }

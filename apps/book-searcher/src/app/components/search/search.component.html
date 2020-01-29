@@ -1,5 +1,6 @@
-<form class="example-form">
+<form (ngSubmit)="searchBooks()" class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Search for books" value="se" label="search">
+    <input matInput placeholder="Search for books" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchValue" label="search">
   </mat-form-field>
+  <button [disabled]="!searchValue" type="submit" mat-raised-button color="primary">Search</button>
 </form>
