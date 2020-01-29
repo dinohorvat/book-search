@@ -14,6 +14,7 @@ export class SearchComponent {
   private searchBooks() {
     this.googleBooksService.fetchVolumes(this.searchValue).subscribe((res) => {
       console.log(res);
+      console.log(JSON.stringify(res));
     })
   }
 }
