@@ -1,4 +1,6 @@
-<kor-workspace-search></kor-workspace-search>
+<kor-workspace-search (searchEvent)="onSearch($event)"></kor-workspace-search>
+<kor-workspace-search-results [books]="books"></kor-workspace-search-results>
+
 <!--<header class="flex">-->
 <!--  <img-->
 <!--    alt="Nx logo"-->
