@@ -9,8 +9,8 @@ export class GoogleBooksService {
     private http: HttpClient
   ) {}
 
-  public fetchVolumes(): Observable<any> {
-    const url = environment.googleBooks+ '/volumes?q=q=quilting&key=AIzaSyBqwT_L7hrR0S76d-FAwtwaMn6hOBUjhug';
+  public fetchVolumes(searchTerm: string): Observable<any> {
+    const url = environment.googleBooks+ `/volumes?q=${searchTerm}`;
     return this.http.get<any>(url);
   }
 
