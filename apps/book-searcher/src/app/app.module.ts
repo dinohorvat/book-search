@@ -10,12 +10,14 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule } from '@
 import { GoogleBooksServiceInterceptor } from './services/google-books.service.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    DefaultLayoutComponent
   ],
   imports: [
     BrowserModule,
