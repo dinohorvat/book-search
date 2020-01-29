@@ -1,7 +1,13 @@
-export interface Welcome {
-  kind:       string;
+export interface GoogleBooksModel {
+  kind:       Kind;
   totalItems: number;
   items:      Item[];
+}
+
+export enum Kind {
+  Volume = 'books#volumes',
+  Bookshelf = 'books#bookshelves',
+  Review = 'books#review'
 }
 
 export interface Item {
