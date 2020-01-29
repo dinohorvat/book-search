@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "korWorkspace", "camelCase"],
+    "component-selector": [true, "element", "kor-workspace", "kebab-case"]
+  }
+}

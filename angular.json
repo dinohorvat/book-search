@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "projects": {
+    "book-searcher": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/book-searcher",
+      "sourceRoot": "apps/book-searcher/src",
+      "prefix": "kor-workspace",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/book-searcher",
+            "index": "apps/book-searcher/src/index.html",
+            "main": "apps/book-searcher/src/main.ts",
+            "polyfills": "apps/book-searcher/src/polyfills.ts",
+            "tsConfig": "apps/book-searcher/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/book-searcher/src/favicon.ico",
+              "apps/book-searcher/src/assets"
+            ],
+            "styles": ["apps/book-searcher/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/book-searcher/src/environments/environment.ts",
+                  "with": "apps/book-searcher/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "book-searcher:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "book-searcher:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "book-searcher:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/book-searcher/tsconfig.app.json",
+              "apps/book-searcher/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/book-searcher/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/book-searcher/jest.config.js",
+            "tsConfig": "apps/book-searcher/tsconfig.spec.json",
+            "setupFile": "apps/book-searcher/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "book-searcher-e2e": {
+      "root": "apps/book-searcher-e2e",
+      "sourceRoot": "apps/book-searcher-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/book-searcher-e2e/cypress.json",
+            "tsConfig": "apps/book-searcher-e2e/tsconfig.e2e.json",
+            "devServerTarget": "book-searcher:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "book-searcher:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/book-searcher-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/book-searcher-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "book-searcher"
+}

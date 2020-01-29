@@ -1,0 +1,22 @@
+{
+  "npmScope": "kor-workspace",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "book-searcher": {
+      "tags": []
+    },
+    "book-searcher-e2e": {
+      "tags": [],
+      "implicitDependencies": ["book-searcher"]
+    }
+  }
+}
