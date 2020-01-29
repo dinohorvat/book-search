@@ -17,10 +17,11 @@ export class SearchResultsComponent implements OnInit {
   }
 
   loadData(event) {
-    //startIndex
-    //orderBy
-    //filter
     this.paginateEvent.emit(event.first);
+  }
+
+  viewBook(previewLink) {
+    window.open(previewLink, '_blank')
   }
 
 }

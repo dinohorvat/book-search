@@ -1,22 +1,4 @@
-<!--<mat-list *ngFor="let book of books">-->
-<!--  <mat-list-item>-->
-<!--    <div class="row title">-->
-<!--      <div>-->
-<!--        <a [href]="book.volumeInfo.previewLink">{{ book.volumeInfo.title }}</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="row description">-->
-<!--      <div>-->
-<!--        <img [src]="book.volumeInfo.imageLinks?.smallThumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="Book">-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        Description-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </mat-list-item>-->
-<!--</mat-list>-->
 <div class="search-content">
-
   <div class="container">
     <p-table *ngIf="books"
              [value]="books"
@@ -25,12 +7,14 @@
              [lazy]="true"
              (onLazyLoad)="loadData($event)"
              [totalRecords]="100"
-             [rows]="10">
+             [rows]="10"
+             class="table">
       <ng-template pTemplate="header">
         <tr>
           <th></th>
           <th>Name</th>
           <th>Publisher</th>
+          <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-book>
@@ -43,6 +27,9 @@
           </td>
           <td>
             {{ book.volumeInfo.publisher }}
+          </td>
+          <td>
+            <button (click)="viewBook(book.volumeInfo.previewLink)" mat-raised-button color="primary">Preview</button>
           </td>
         </tr>
       </ng-template>

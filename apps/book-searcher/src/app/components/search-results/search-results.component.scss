@@ -1,14 +1,17 @@
-mat-card {
-  margin-bottom: 20px;
-}
-
-image {
-  max-width: 150px;
-  max-height: 200px;
-}
-
 .container {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  mat-card {
+    margin-bottom: 20px;
+  }
+
+  img {
+    max-width: 80px;
+    max-height: 200px;
+  }
+  .table {
+    width: 100%;
+  }
 }
