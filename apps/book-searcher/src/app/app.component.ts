@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GoogleBooksModel, Item } from './models/google-books.model';
+import { Item } from './models/google-books.model';
+import { GoogleBooksService } from './services/google-books.service';
 
 @Component({
   selector: 'kor-workspace-root',
@@ -11,9 +12,13 @@ export class AppComponent {
   booksTotal: number;
   title = 'book-searcher';
 
-  onSearch(event: GoogleBooksModel) {
-    console.log(event);
-    this.books = event.items;
-    this.booksTotal = event.totalItems;
+  constructor(private googleBooksService: GoogleBooksService) {}
+
+  onSearch(event: string) {
+    this.googleBooksService.fetchVolumes(event).subscribe((res) => {
+      this.books = res.items;
+      this.booksTotal = res.totalItems;
+    });
+
   }
 }

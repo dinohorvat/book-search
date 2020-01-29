@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../../models/google-books.model';
 
 @Component({
@@ -9,9 +9,15 @@ import { Item } from '../../models/google-books.model';
 export class SearchResultsComponent implements OnInit {
   @Input() public books: Item[];
   @Input() public booksTotal: number;
+
+  @Output() public searchEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loadData(event) {
+    
   }
 
 }

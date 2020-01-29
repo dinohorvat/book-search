@@ -18,12 +18,14 @@
 <div class="search-content">
 
   <div class="container">
-    <p-table [value]="books"
+    <p-table *ngIf="books"
+             [value]="books"
              [autoLayout]="true"
              [paginator]="true"
-             *ngIf="books"
-             [rows]="10"
-    >
+             [lazy]="true"
+             (onLazyLoad)="loadData($event)"
+             [totalRecords]="100"
+             [rows]="10">
       <ng-template pTemplate="header">
         <tr>
           <th></th>
