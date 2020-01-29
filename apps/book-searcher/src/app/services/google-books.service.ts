@@ -10,7 +10,7 @@ export class GoogleBooksService {
   ) {}
 
   public fetchVolumes(): Observable<any> {
-    const url = environment.googleBooks+ '/volumes?key=AIzaSyBqwT_L7hrR0S76d-FAwtwaMn6hOBUjhug';
+    const url = environment.googleBooks+ '/volumes?q=q=quilting&key=AIzaSyBqwT_L7hrR0S76d-FAwtwaMn6hOBUjhug';
     return this.http.get<any>(url);
   }
 
