@@ -10,9 +10,9 @@ export class GoogleBooksService {
     private http: HttpClient
   ) {}
 
-  public fetchVolumes(searchTerm: string): Observable<GoogleBooksModel> {
+  public fetchVolumes(searchTerm: string, query?: any): Observable<GoogleBooksModel> {
     const url = environment.googleBooks+ `/volumes?q=${searchTerm}`;
-    return this.http.get<GoogleBooksModel>(url);
+    return this.http.get<GoogleBooksModel>(url, {params: query});
   }
 
 }

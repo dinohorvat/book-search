@@ -10,6 +10,6 @@ export class SearchComponent {
   public searchValue = '';
 
   private searchBooks() {
-    this.searchEvent.emit(this.searchValue);
+    this.searchEvent.emit({searchValue: this.searchValue});
   }
 }

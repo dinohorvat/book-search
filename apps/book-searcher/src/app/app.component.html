@@ -8,5 +8,5 @@
 </header>
 <main>
   <kor-workspace-search (searchEvent)="onSearch($event)"></kor-workspace-search>
-  <kor-workspace-search-results [books]="books" [booksTotal]="booksTotal"></kor-workspace-search-results>
+  <kor-workspace-search-results (paginateEvent)="onPaginate($event)" [books]="books" [booksTotal]="booksTotal"></kor-workspace-search-results>
 </main>

@@ -11,14 +11,19 @@ export class AppComponent {
   books: Item[];
   booksTotal: number;
   title = 'book-searcher';
+  private searchValue = '';
 
   constructor(private googleBooksService: GoogleBooksService) {}
 
-  onSearch(event: string) {
-    this.googleBooksService.fetchVolumes(event).subscribe((res) => {
+  onSearch({searchValue, queryParam}) {
+    if(searchValue) this.searchValue = searchValue;
+    this.googleBooksService.fetchVolumes(searchValue, queryParam).subscribe((res) => {
       this.books = res.items;
       this.booksTotal = res.totalItems;
     });
+  }
 
+  onPaginate(event: number) {
+    this.onSearch({searchValue: this.searchValue, queryParam: {startIndex: event} });
   }
 }

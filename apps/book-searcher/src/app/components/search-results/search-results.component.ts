@@ -10,14 +10,17 @@ export class SearchResultsComponent implements OnInit {
   @Input() public books: Item[];
   @Input() public booksTotal: number;
 
-  @Output() public searchEvent = new EventEmitter();
+  @Output() public paginateEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
   loadData(event) {
-    
+    //startIndex
+    //orderBy
+    //filter
+    this.paginateEvent.emit(event.first);
   }
 
 }
