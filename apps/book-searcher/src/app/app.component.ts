@@ -18,7 +18,6 @@ export class AppComponent {
   onSearch({searchValue, queryParam}) {
     if(searchValue) this.searchValue = searchValue;
     this.googleBooksService.fetchVolumes(searchValue, queryParam).subscribe((res) => {
-      console.log(res);
       this.books = res.items;
       this.booksTotal = res.totalItems;
     });

@@ -10,7 +10,6 @@ import { TextConstants } from '../../constants/constants';
 })
 export class SearchResultsComponent {
   @Input('books') set books(books: Item[]) {
-    console.log(JSON.stringify(books));
     this._books = books;
     this.sortedBooks = books;
   }
@@ -20,14 +19,12 @@ export class SearchResultsComponent {
   @Input() public booksTotal: number;
   @Output() public paginateEvent = new EventEmitter();
 
-  public sortedBooks: Item[];
   public NO_AUTHOR = TextConstants.NO_AUTHOR;
+  public sortedBooks: Item[];
   private _books: Item[];
 
   changePage(pageEvent: PageEvent) {
-    console.log(pageEvent);
     this.paginateEvent.emit(pageEvent.pageIndex * pageEvent.pageSize);
-
   }
 
   sortData(sort: Sort) {

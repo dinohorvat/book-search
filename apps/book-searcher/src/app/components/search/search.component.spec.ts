@@ -25,10 +25,18 @@ describe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
+    component.searchValue = 'Dino';
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit searched data', () => {
+    spyOn(component.searchEvent, 'emit');
+    component.searchBooks();
+    expect(component.searchEvent.emit).toHaveBeenCalledWith({searchValue: 'Dino'});
   });
 });

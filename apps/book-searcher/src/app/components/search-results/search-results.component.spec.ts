@@ -32,9 +32,22 @@ describe('SearchResultsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it ('should filter books alphabetically', () => {
+  it('should have books defined', () => {
+    expect(component.sortedBooks).toBeDefined();
+  });
+
+  it ('should filter books alphabetically in ASC order', () => {
     component.sortData({active: 'title', direction: 'asc'});
-    console.log(component.books);
-    expect(component.sortedBooks[0].volumeInfo.title).toBe('Dino');
+    expect(component.sortedBooks[0].volumeInfo.title).toEqual('A Highly Focusing Beta Spectrometer');
+  });
+
+  it ('should filter books alphabetically in DESC order', () => {
+    component.sortData({active: 'title', direction: 'desc'});
+    expect(component.sortedBooks[0].volumeInfo.title).toEqual('XI Censo general de población y vivienda, 1990');
+  });
+
+  it ('should filter books alphabetically in default order', () => {
+    component.sortData({active: 'title', direction: ''});
+    expect(component.sortedBooks[0].volumeInfo.title).toEqual('Dear Dinoo');
   })
 });

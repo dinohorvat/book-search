@@ -9,7 +9,7 @@ export class SearchComponent {
   @Output() public searchEvent = new EventEmitter();
   public searchValue = '';
 
-  private searchBooks() {
+  public searchBooks() {
     this.searchEvent.emit({searchValue: this.searchValue});
   }
 }
