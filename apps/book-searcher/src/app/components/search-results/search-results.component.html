@@ -1,5 +1,4 @@
-<div *ngIf="sortedBooks" class="container">
-  <ng-container *ngTemplateOutlet="paginator"></ng-container>
+<div class="container">
   <table class="table" matSort (matSortChange)="sortData($event)">
     <tr>
       <th></th>
@@ -8,7 +7,7 @@
       <th>Actions</th>
     </tr>
 
-    <tr *ngFor="let book of sortedBooks">
+    <tr class="data-row" *ngFor="let book of sortedBooks">
       <td>
         <img [src]="book.volumeInfo.imageLinks?.thumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="thumbnail">
       </td>
@@ -29,7 +28,8 @@
 
 <ng-template #paginator>
   <div class="paginator">
-    <mat-paginator [length]="booksTotal"
+    <mat-paginator #matPaginator
+                   [length]="booksTotal"
                    [pageSize]="10"
                    (page)="changePage($event)">
     </mat-paginator>

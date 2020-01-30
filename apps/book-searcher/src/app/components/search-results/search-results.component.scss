@@ -6,10 +6,16 @@
   .table {
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+
+    .data-row {
+      margin-bottom: 10px;
+
+      td {
+        border-bottom: 1px solid rgba(0,0,0,.12);
+      }
+    }
     .title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       max-width: 400px;
     }
     .actions {
