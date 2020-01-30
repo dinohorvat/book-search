@@ -12,13 +12,13 @@
       <td>
         <img [src]="book.volumeInfo.imageLinks?.thumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="thumbnail">
       </td>
-      <td>{{book.volumeInfo.title}}</td>
+      <td class="title">{{book.volumeInfo.title}}</td>
       <td>
         <ng-container *ngIf="book.volumeInfo.authors; else noAuthor">
           {{ book.volumeInfo.authors[0] }}
         </ng-container>
         <ng-template #noAuthor>
-          Author Unknown
+          {{ NO_AUTHOR }}
         </ng-template>
       </td>
       <td><button (click)="viewBook(book.volumeInfo.previewLink)" mat-raised-button color="primary">Preview</button></td>

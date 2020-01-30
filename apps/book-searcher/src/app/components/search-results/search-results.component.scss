@@ -1,5 +1,4 @@
 .container {
-
   img {
     max-width: 80px;
     max-height: 200px;
@@ -7,6 +6,12 @@
   .table {
     margin-left: auto;
     margin-right: auto;
+    .title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
     .actions {
       text-align: center;
     }
