@@ -18,7 +18,9 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 
 const MATERIAL_MODULES = [
   MatSortModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatInputModule,
+  MatButtonModule
 ];
 
 @NgModule({
@@ -31,8 +33,6 @@ const MATERIAL_MODULES = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatInputModule,
-    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MATERIAL_MODULES

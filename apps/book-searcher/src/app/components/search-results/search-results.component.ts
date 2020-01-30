@@ -10,6 +10,7 @@ import { TextConstants } from '../../constants/constants';
 })
 export class SearchResultsComponent {
   @Input('books') set books(books: Item[]) {
+    console.log(JSON.stringify(books));
     this._books = books;
     this.sortedBooks = books;
   }
@@ -31,7 +32,6 @@ export class SearchResultsComponent {
 
   sortData(sort: Sort) {
     const data = this.books.slice();
-    console.log(data);
     if (!sort.active || sort.direction === '') {
       this.sortedBooks = data;
       return;
