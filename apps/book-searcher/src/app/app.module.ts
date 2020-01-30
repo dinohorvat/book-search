@@ -6,20 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleBooksService } from './services/google-books.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatSortModule
+} from '@angular/material';
 import { GoogleBooksServiceInterceptor } from './services/google-books.service.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
-import { TableModule } from 'primeng/table';
 
 const MATERIAL_MODULES = [
-  MatCardModule,
-  MatListModule
+  MatSortModule,
+  MatPaginatorModule
 ];
 
-const PRIME_MODULES = [
-  TableModule
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +35,7 @@ const PRIME_MODULES = [
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MATERIAL_MODULES,
-    PRIME_MODULES
+    MATERIAL_MODULES
   ],
   providers: [
     {

@@ -1,17 +1,14 @@
 .container {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  mat-card {
-    margin-bottom: 20px;
-  }
 
   img {
     max-width: 80px;
     max-height: 200px;
   }
   .table {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    .actions {
+      text-align: center;
+    }
   }
 }

@@ -1,40 +1,37 @@
-<div class="search-content">
-  <div class="container">
-    <p-table *ngIf="books"
-             [value]="books"
-             [autoLayout]="true"
-             [paginator]="true"
-             [lazy]="true"
-             (onLazyLoad)="loadData($event)"
-             [totalRecords]="100"
-             [rows]="10"
-             class="table">
-      <ng-template pTemplate="header">
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Publisher</th>
-          <th></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-book>
-        <tr>
-          <td>
-            <img [src]="book.volumeInfo.imageLinks?.thumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="Photo of a Shiba Inu">
-          </td>
-          <td>
-            {{ book.volumeInfo.title }}
-          </td>
-          <td>
-            {{ book.volumeInfo.publisher }}
-          </td>
-          <td>
-            <button (click)="viewBook(book.volumeInfo.previewLink)" mat-raised-button color="primary">Preview</button>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
+<div *ngIf="sortedBooks" class="container">
+  <ng-container *ngTemplateOutlet="paginator"></ng-container>
+  <table class="table" matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th></th>
+      <th mat-sort-header="title">Title</th>
+      <th mat-sort-header="author">Author</th>
+      <th>Actions</th>
+    </tr>
+
+    <tr *ngFor="let book of sortedBooks">
+      <td>
+        <img [src]="book.volumeInfo.imageLinks?.thumbnail || 'http://i.imgur.com/J5LVHEL.jpg'" alt="thumbnail">
+      </td>
+      <td>{{book.volumeInfo.title}}</td>
+      <td>
+        <ng-container *ngIf="book.volumeInfo.authors; else noAuthor">
+          {{ book.volumeInfo.authors[0] }}
+        </ng-container>
+        <ng-template #noAuthor>
+          Author Unknown
+        </ng-template>
+      </td>
+      <td><button (click)="viewBook(book.volumeInfo.previewLink)" mat-raised-button color="primary">Preview</button></td>
+    </tr>
+  </table>
+  <ng-container *ngTemplateOutlet="paginator"></ng-container>
 </div>
 
-
+<ng-template #paginator>
+  <div class="paginator">
+    <mat-paginator [length]="booksTotal"
+                   [pageSize]="10"
+                   (page)="changePage($event)">
+    </mat-paginator>
+  </div>
+</ng-template>
